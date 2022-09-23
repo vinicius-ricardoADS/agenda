@@ -9,13 +9,13 @@ import com.pw3.model.Pessoa;
 
 public class PessoaDAO {
 
-    public void save(Pessoa p) throws SQLException{
+    public void save(Pessoa p) throws SQLException{ //Realizar teste
         final Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
         final Statement stmt = connection.createStatement();
 
         String sql = "INSERT INTO product (id, name, email, phone) values (?,?,?,?)";
         stmt.addBatch(String.format(sql, p.getId(), p.getName(), p.getEmail(), p.getPhone()));
-        
+
         stmt.close();
         connection.close();
     }
